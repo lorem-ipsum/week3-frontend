@@ -13,7 +13,8 @@ class Movie extends React.Component {
       movietitle: '',
       star: '',
       summary: '',
-      chars: []
+      chars: [],
+      comments: [],
     }
   }
 
@@ -28,7 +29,8 @@ class Movie extends React.Component {
         movietitle: data.title,
         star: data.star,
         summary: data.summary,
-        chars: data.characters
+        chars: data.characters,
+        comments: data.comments
       })
     }).catch((err) => {
       // console.log("failure")
@@ -48,6 +50,8 @@ class Movie extends React.Component {
         {this.state.chars.map((str) =>
           <CharacterThumbnail cid={parseInt(str)} key={str} />
         )}
+        <h2>Comments</h2>
+        {this.state.comments.map((comment) => <p key={comment}>{comment}</p>)}
       </>
     )
   }

@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react'
 
-import CharacterThumbNail from './CharacterThumbNail'
+import CommentThumbNail from './CommentThumbNail'
 
 import axios from 'axios'
 
 import Pagination from 'rc-pagination'
 import 'rc-pagination/assets/index.css'
 
-function MultiCharacters(props) {
-  const [characterlist, setCharacterlist] = useState([])
+function MultiComments(props) {
+  const [commentlist, setCommentlist] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPageNum, setTotalPageNum] = useState(0)
   const [urlPrefix, setUrlPrefix] = useState(props.url)
   const [time, setTime] = useState(0.1)
   useEffect(() => {
     axios.get(urlPrefix + 'page=1').then((resp) => {
-      setCharacterlist(resp.data.characterlist)
+      setCommentlist(resp.data.commentlist)
       setTotalPageNum(resp.data.totalPageNum)
       setTime(resp.data.time)
     }).catch((err) => { })
@@ -25,14 +25,15 @@ function MultiCharacters(props) {
     console.log('page changed to ', page)
     setCurrentPage(page)
     axios.get(urlPrefix + 'page=' + page.toString()).then((resp) => {
-      setCharacterlist(resp.data.characterlist)
-      console.log(characterlist)
+      setCommentlist(resp.data.commentlist)
+      console.log(commentlist)
     }).catch((err) => { })
   }
   return (
     <>
       {props.time && <p>共查询到{totalPageNum}条记录，花费时间{time}秒</p>}
-      {characterlist.map((character) => <CharacterThumbNail cid={character} key={character} />)}
+      {commentlist.map((comment) => <CommentThumbNail id={comment} key={comment} />)}
+      {console.log(commentlist[0], commentlist[1])}
       <div style={{ margin: '48px auto auto', textAlign: 'center' }}>
         {console.log(totalPageNum)}
         <Pagination
@@ -47,4 +48,4 @@ function MultiCharacters(props) {
   )
 }
 
-export default MultiCharacters;
+export default MultiComments;

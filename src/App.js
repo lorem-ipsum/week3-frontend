@@ -6,17 +6,17 @@ import Movie from './components/Movie'
 import Character from './components/Character'
 import Menubar from './components/Menubar'
 import Footer from './components/Footer'
-import MuiltiMovies from './components/MultiMovies'
+import MultiMovies from './components/MultiMovies'
+import MultiCharacters from './components/MultiCharacters'
 import Search from './components/Search'
 
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
-import MultiCharacters from './components/MultiCharacters';
 
 function App() {
   return (
     <>
-      <div style={{ margin: '40px 36px auto' }}>
+      <div>
         <Router forceRefresh={true}>
           <Menubar />
           <Route>
@@ -27,11 +27,11 @@ function App() {
               />
               <Route exact
                 path="/movies/"
-                render={props => (<MuiltiMovies {...props} />)}
+                render={props => (<MultiMovies {...props} url='http://localhost:8000/api/movies?' />)}
               />
               <Route exact
                 path="/characters/"
-                render={props => (<MultiCharacters {...props} />)}
+                render={props => (<MultiCharacters {...props} url='http://localhost:8000/api/characters?' />)}
               />
               <Route
                 path="/movies/:mid"
