@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import Movie from './components/Movie'
@@ -11,7 +10,7 @@ import MultiCharacters from './components/MultiCharacters'
 import Search from './components/Search'
 
 
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 function App() {
   return (
