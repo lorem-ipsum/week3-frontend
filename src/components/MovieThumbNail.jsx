@@ -24,7 +24,12 @@ function MovieThumbNail(props) {
 
   return (
     <div onClick={handleClick} style={{ display: 'inline-block', width: '180px', height: '240px', background: '#dedede', margin: '40px' }}>
-      <img src={picurl} alt="pic" style={{ width: '180px' }} />
+      <img
+        src={picurl}
+        alt="pic"
+        style={{ width: '180px' }}
+        onError={(ev) => ev.target.src = '/assets/celebrity-default-medium.png'}
+      />
       <p style={{ zIndex: 100, textAlign: 'center' }}>{title}</p>
     </div >
   )

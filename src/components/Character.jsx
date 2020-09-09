@@ -48,10 +48,10 @@ class Character extends React.Component {
           <h1>{this.state.name}</h1>
           <p>个人简介： {this.state.description}</p>
         </div>
-        <h2>Related Movies</h2>
+        <h2>相关电影</h2>
         {this.state.relatedmovies.map((movie) => <MovieThumbnail mid={parseInt(movie)} key={movie} />)}
-        <h2>Related Characters</h2>
-        {this.state.relatedchars.map((char) => <CharacterThumbNail cid={char[0]} key={char[0]} />)}
+        <h2>相关演员</h2>
+        {this.state.relatedchars.map((char) => <CharacterThumbNail cid={char[0]} key={char[0]} opnum={char[1]} />)}
       </>
     )
   }

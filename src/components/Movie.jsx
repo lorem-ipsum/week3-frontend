@@ -40,7 +40,13 @@ class Movie extends React.Component {
   render() {
     return (
       <>
-        <img src={this.state.picurl} alt="pic" style={{ display: 'inline-block', minWidth: '300px', maxWidth: '400px' }} width='30%' />
+        <img
+          src={this.state.picurl}
+          alt="pic"
+          style={{ display: 'inline-block', minWidth: '300px', maxWidth: '400px' }}
+          width='30%'
+          onError={(ev) => ev.target.src = '/assets/celebrity-default-medium.png'}
+        />
         <div style={{ display: 'inline-block', width: 'auto', padding: '36px', boxSizing: 'border-box' }}>
           <h1>{this.state.movietitle}</h1>
           <p>评分: {this.state.star}</p>

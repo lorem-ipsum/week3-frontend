@@ -10,7 +10,7 @@ import MultiCharacters from './components/MultiCharacters'
 import Search from './components/Search'
 
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
 function App() {
   return (
@@ -20,6 +20,9 @@ function App() {
           <Menubar />
           <Route>
             <Switch>
+              <Route exact path="/">
+                <Redirect to="/movies/" />
+              </Route>
               <Route exact
                 path="/search/"
                 render={props => (<Search {...props} />)}

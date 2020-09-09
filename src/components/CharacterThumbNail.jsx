@@ -30,7 +30,7 @@ function CharacterThumbNail(props) {
         style={{ width: '180px' }}
         onError={(ev) => ev.target.src = '/assets/celebrity-default-medium.png'}
       />
-      <p style={{ zIndex: 100, textAlign: 'center' }}>{name}</p>
+      <p style={{ zIndex: 100, textAlign: 'center' }}>{name} {props.opnum && <span>({props.opnum})</span>}</p>
     </div >
   )
 }
