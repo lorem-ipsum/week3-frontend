@@ -7,6 +7,9 @@ import axios from 'axios'
 import Pagination from 'rc-pagination'
 import 'rc-pagination/assets/index.css'
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+
 function MultiComments(props) {
   const [commentlist, setCommentlist] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
@@ -31,7 +34,10 @@ function MultiComments(props) {
   }
   return (
     <>
-      {props.time && <p>共查询到{totalPageNum}条记录，花费时间{time}秒</p>}
+      {props.time &&
+        <div class="alert alert-light" role="alert">
+          共查询到{totalPageNum}条记录，花费时间{time}秒
+        </div>}
       {commentlist.map((comment) => <CommentThumbNail id={comment} key={comment} />)}
       {console.log(commentlist[0], commentlist[1])}
       <div style={{ margin: '48px auto auto', textAlign: 'center' }}>

@@ -7,6 +7,8 @@ import axios from 'axios'
 import Pagination from 'rc-pagination'
 import 'rc-pagination/assets/index.css'
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 function MultiMovies(props) {
   const [movielist, setMovielist] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
@@ -31,8 +33,18 @@ function MultiMovies(props) {
     }).catch((err) => { })
   }
   return (
-    <>
-      {props.time && <p>共查询到{totalPageNum}条记录，花费时间{time}秒</p>}
+    <div className="container">
+      {props.time &&
+        <div class="alert alert-light" role="alert">
+          共查询到{totalPageNum}条记录，花费时间{time}秒
+        </div>}
+      {props.mainPage &&
+        <>
+          <h1 className="display-3 m-4">电影</h1>
+          <div class="alert alert-light mx-4" role="alert">
+            共有{totalPageNum}条记录
+         </div>
+        </>}
       {movielist.map((movie) => <MovieThumbNail mid={movie} key={movie} />)}
       {console.log(movielist[0], movielist[1])}
       <div style={{ margin: '48px auto auto', textAlign: 'center' }}>
@@ -45,7 +57,7 @@ function MultiMovies(props) {
           showQuickJumper
         />
       </div>
-    </>
+    </div>
   )
 }
 

@@ -5,6 +5,7 @@ import axios from 'axios'
 import MovieThumbnail from './MovieThumbNail'
 import CharacterThumbNail from './CharacterThumbNail'
 
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 class Character extends React.Component {
   constructor(props) {
@@ -36,23 +37,29 @@ class Character extends React.Component {
 
   render() {
     return (
-      <>
+      <div className="container">
         <img
           src={this.state.picurl}
           alt="pic"
-          style={{ display: 'inline-block', minWidth: '300px', maxWidth: '400px' }}
+          style={{ minWidth: '300px', maxWidth: '400px' }}
           width='30%'
           onError={(ev) => ev.target.src = '/assets/celebrity-default-medium.png'}
         />
-        <div style={{ display: 'inline-block', width: 'auto', padding: '36px', boxSizing: 'border-box' }}>
-          <h1>{this.state.name}</h1>
-          <p>个人简介： {this.state.description}</p>
+        <div className="py-5" >
+          <h1 className="display-3">{this.state.name}</h1>
         </div>
-        <h2>相关电影</h2>
+        <h2 className="display-4">个人简介</h2>
+        <div class="card my-4">
+          <div class="card-body">
+            {this.state.description}
+          </div>
+        </div>
+
+        <h2 className="display-4">相关电影</h2>
         {this.state.relatedmovies.map((movie) => <MovieThumbnail mid={parseInt(movie)} key={movie} />)}
-        <h2>相关演员</h2>
+        <h2 className="display-4 mt-5">相关演员</h2>
         {this.state.relatedchars.map((char) => <CharacterThumbNail cid={char[0]} key={char[0]} opnum={char[1]} />)}
-      </>
+      </div>
     )
   }
 }

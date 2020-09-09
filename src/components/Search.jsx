@@ -53,7 +53,7 @@ function Search() {
   }
 
   return (
-    <>
+    <div className="container">
       <div class="input-group" style={{ margin: '80px auto 40px', width: '50%' }}>
         <div class="input-group-prepend">
           <button ref={toggleRef} class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{chosen}</button>
@@ -80,14 +80,13 @@ function Search() {
       {
         searched && (
           <>
-            {/* <p>Time costed: {time}</p> */}
             {option === 'movie' && <MultiMovies url={url} time />}
             {option === 'character' && <MultiCharacters url={url} time />}
             {option === 'comment' && <MultiComments url={url} time />}
           </>
         )
       }
-    </>
+    </div>
   )
 }
 

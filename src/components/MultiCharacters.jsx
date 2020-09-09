@@ -7,6 +7,9 @@ import axios from 'axios'
 import Pagination from 'rc-pagination'
 import 'rc-pagination/assets/index.css'
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+
 function MultiCharacters(props) {
   const [characterlist, setCharacterlist] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
@@ -30,9 +33,18 @@ function MultiCharacters(props) {
     }).catch((err) => { })
   }
   return (
-    <>
-      {props.time && <p>共查询到{totalPageNum}条记录，花费时间{time}秒</p>}
-      {characterlist.map((character) => <CharacterThumbNail cid={character} key={character} />)}
+    <div className="container">
+      {props.time &&
+        <div class="alert alert-light" role="alert">
+          共查询到{totalPageNum}条记录，花费时间{time}秒
+        </div>}
+      {props.mainPage &&
+        <>
+          <h1 className="display-3 m-4">演员</h1>
+          <div class="alert alert-light mx-4" role="alert">
+            共有{totalPageNum}条记录
+         </div>
+        </>}      {characterlist.map((character) => <CharacterThumbNail cid={character} key={character} />)}
       <div style={{ margin: '48px auto auto', textAlign: 'center' }}>
         {console.log(totalPageNum)}
         <Pagination
@@ -43,7 +55,7 @@ function MultiCharacters(props) {
           showQuickJumper
         />
       </div>
-    </>
+    </div>
   )
 }
 

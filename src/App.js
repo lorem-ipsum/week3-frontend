@@ -29,11 +29,11 @@ function App() {
               />
               <Route exact
                 path="/movies/"
-                render={props => (<MultiMovies {...props} url='http://localhost:8000/api/movies?' />)}
+                render={props => (<MultiMovies {...props} url='http://localhost:8000/api/movies?' mainPage />)}
               />
               <Route exact
                 path="/characters/"
-                render={props => (<MultiCharacters {...props} url='http://localhost:8000/api/characters?' />)}
+                render={props => (<MultiCharacters {...props} url='http://localhost:8000/api/characters?' mainPage />)}
               />
               <Route
                 path="/movies/:mid"

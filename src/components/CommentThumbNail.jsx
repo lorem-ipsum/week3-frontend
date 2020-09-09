@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import { Link, useHistory } from 'react-router-dom'
 
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function CommentThumbNail(props) {
   const history = useHistory()
@@ -24,9 +25,11 @@ function CommentThumbNail(props) {
   }
 
   return (
-    <div onClick={handleClick} style={{ display: 'block', width: '100%', background: '#dedede', padding: '40px', marginBottom: '24px' }}>
-      <p>{commentText}</p>
-    </div >
+    <div class="card" onClick={handleClick}>
+      <div class="card-body">
+        {commentText}
+      </div>
+    </div>
   )
 }
 
